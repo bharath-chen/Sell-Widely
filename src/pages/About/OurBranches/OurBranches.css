@@ -1,0 +1,43 @@
+/* Add custom styles for the dial pad buttons */
+
+/* Add custom styles for the small dial pad buttons */
+.btn-dialpad-sm {
+  /* Customize the button background color */
+  background-color: #2d3748;
+  /* Customize the button text color */
+  color: #fff;
+  /* Add padding */
+  padding: 0.5rem;
+  /* Add border radius */
+  border-radius: 0.25rem;
+  /* Set font size */
+  font-size: 0.875rem;
+  /* Add hover effect */
+  transition: background-color 0.3s ease;
+}
+
+.btn-dialpad-sm:hover {
+  /* Customize the button background color on hover */
+  background-color: #1a202c;
+}
+
+/* Add custom styles for the small clear button */
+.btn-clear-sm {
+  /* Customize the button background color */
+  background-color: #ff6347;
+  /* Customize the button text color */
+  color: #fff;
+  /* Add padding */
+  padding: 0.5rem 0;
+  /* Add border radius */
+  border-radius: 0.25rem;
+  /* Set font size */
+  font-size: 0.875rem;
+  /* Add hover effect */
+  transition: background-color 0.3s ease;
+}
+
+.btn-clear-sm:hover {
+  /* Customize the button background color on hover */
+  background-color: #e23e23;
+}

@@ -1,0 +1,16 @@
+/* Default styles for Navbar */
+.nc-HeaderLogged {
+  position: sticky;
+  top: 0;
+}
+
+/* When the screen is smaller than 426px */
+@media screen and (max-width: 425px) {
+  .nc-HeaderLogged {
+    position: fixed; /* Change position to fixed */
+    bottom: 0; /* Move it to the bottom */
+    top: auto; /* Disable the top property */
+    width: 100%; /* Ensure it spans the full width of the screen */
+    z-index: 1000; /* Keep it above other elements */
+  }
+}

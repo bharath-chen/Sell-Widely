@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+ul.dashed {
+  list-style-type: none;
+}
+
+ul.dashed li:before {
+  content: "-";
+  position: absolute;
+  margin-left: -20px;
+}
+
+/* Hide scrollbar but enable scrolling */
+.scroll-hidden::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.scroll-hidden::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scroll-hidden::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* React player css */
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 1;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #868586 #4b4949;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #4b4949;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #a3a1a2;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+}
+
+svg.star-svg {
+  display: inline;
+}
