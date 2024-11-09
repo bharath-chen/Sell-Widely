@@ -51,6 +51,10 @@ import {
 } from "../../features/cart/cartSlice";
 import { RootState } from "../../state/store";
 import { Rating } from "react-simple-star-rating";
+import product1Img from "../../assets/images/1d.png";
+import product2Img from "../../assets/images/2d.jpg";
+import product3Img from "../../assets/images/3d.jpg";
+import product4Img from "../../assets/images/4d.jpg";
 
 const calculateOriginalPrice = (price: number, pack: number) => price * pack;
 
@@ -106,96 +110,429 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
     useState(false);
   const [openFocusIndex, setOpenFocusIndex] = useState(0);
 
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [productDetail, setProductDetail] = useState<ProductDetail>();
+  const [productDetail, setProductDetail] = useState<ProductDetail>({
+    product_details: [
+      {
+        product_id: "p001",
+        product_code: "SKU12345",
+        product_name: "Organic Face Cream",
+        product_image1: product1Img,
+        product_image2: product1Img,
+        product_image3: product1Img,
+        product_image4: product1Img,
+        product_image5: product1Img,
+        video: "video1.mp4",
+        audio: "audio1.mp3",
+        howtouse: "Apply a small amount on clean skin and massage gently.",
+        suitablefor: "Dry Skin",
+        is_nutraceutical: "false",
+        bottom_image: "bottom_image1.jpg",
+        full_description:
+          "A moisturizing organic face cream suitable for dry skin. Contains natural ingredients to hydrate and soothe.",
+        short_description: "Organic face cream for dry skin",
+        barcode: "123456789012",
+        barcode_image: "barcode1.png",
+        product_sgst: "5%",
+        product_cgst: "5%",
+        recomm_gender: "Unisex",
+        nat_of_prod: "India",
+        herb_type: "Aloe Vera",
+        is_featured: "true",
+        is_combo: "false",
+        pres_req: "No",
+        is_offer: "true",
+        offer: "20% off",
+        user_ratings: "4.5",
+        almaa_ratings: "4.3",
+        status: "Available",
+        created_date: "2024-01-15",
+        modified_date: "2024-06-10",
+        key_benefits: "Moisturizes, soothes, and nourishes the skin.",
+      },
+    ],
+    product_attributes: [
+      {
+        prod_attri_id: "attr1",
+        product_id: "p001",
+        size_id: "s1",
+        product_measuring_unit_id: "50g",
+        product_purchase_price: "200",
+        product_mrp: "300",
+        unit_price: "240",
+        discount: "20%",
+        selling_price: "240",
+        quantity: "50",
+        reordered_level: "10",
+        attstatus: "active",
+        created_date: "2024-01-01",
+        modified_date: "2024-06-10",
+        measurement_name: "50 ml",
+      },
+    ],
+    product_experttalk: [
+      {
+        pro_exptalk_id: "talk1",
+        product_id: "p001",
+        image: "doctor_image1.jpg",
+        doctor_id: "doc1",
+        content:
+          "This face cream is excellent for hydration and contains natural ingredients.",
+        status: "Active",
+        created_date: "2024-06-01",
+      },
+    ],
+    product_feedback: [
+      {
+        prodcustfb_id: "fb1",
+        customer_id: "cust1",
+        name: "John Doe",
+        product_id: "p001",
+        user_ratings: "5",
+        comments: "Great cream, very moisturizing!",
+        status: "Approved",
+      },
+    ],
+    product_tags: [
+      {
+        pro_tag_id: "tag1",
+        product_id: "p001",
+        tag_id: "tag1",
+        status: "Active",
+      },
+      {
+        pro_tag_id: "tag2",
+        product_id: "p001",
+        tag_id: "tag2",
+        status: "Active",
+      },
+    ],
+    product_ingred: [
+      {
+        pro_cat_id: "ing1",
+        product_id: "p001",
+        ingredient_id: "ing1",
+        status: "Active",
+      },
+      {
+        pro_cat_id: "ing2",
+        product_id: "p001",
+        ingredient_id: "ing2",
+        status: "Active",
+      },
+    ],
+  });
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([
+    {
+      product_id: "p001",
+      product_code: "SKU12345",
+      category_id: "c1",
+      subcategory_id: "sc1",
+      product_name: "Organic Face Cream",
+      age_group_id: "adult",
+      brand_id: "b1",
+      product_image1: product1Img,
+      product_image2: product1Img,
+      full_description:
+        "A moisturizing organic face cream suitable for dry skin.",
+      short_description: "Organic face cream for dry skin",
+      barcode: "123456789012",
+      barcode_image: "barcode1.png",
+      product_sgst: "5%",
+      product_cgst: "5%",
+      recomm_gender: "Unisex",
+      nat_of_prod: "Natural",
+      herb_type: "Aloe Vera",
+      is_featured: "true",
+      is_combo: "false",
+      is_today: "false",
+      is_offer: "true",
+      offer: "20% off",
+      user_ratings: "4.5",
+      almaa_ratings: "4.3",
+      status: "Available",
+      created_date: "2024-01-15",
+      updated: "2024-06-10",
+      prod_attri_id: "attr1",
+      color_id: "c1",
+      size_id: "s1",
+      product_measuring_unit_id: "ml",
+      product_purchase_price: "200",
+      product_mrp: "300",
+      unit_price: "240",
+      discount: "20%",
+      selling_price: "240",
+      quantity: 50,
+      reordered_level: "10",
+      attstatus: "active",
+      created: "2024-01-01",
+      is_in_wishlist: false,
+      isLiked: true,
+      qty: 1,
+      suitablefor: "Dry Skin",
+      measurement_name: "50 ml",
+    },
+    {
+      product_id: "p002",
+      product_code: "SKU12346",
+      category_id: "c1",
+      subcategory_id: "sc2",
+      product_name: "Herbal Shampoo",
+      age_group_id: "all",
+      brand_id: "b2",
+      product_image1: product2Img,
+      product_image2: product2Img,
+      full_description: "Gentle herbal shampoo for all hair types.",
+      short_description: "Herbal shampoo for shiny hair",
+      barcode: "123456789013",
+      barcode_image: "barcode2.png",
+      product_sgst: "5%",
+      product_cgst: "5%",
+      recomm_gender: "Unisex",
+      nat_of_prod: "Herbal",
+      herb_type: "Neem",
+      is_featured: "false",
+      is_combo: "false",
+      is_today: "true",
+      is_offer: "false",
+      offer: "",
+      user_ratings: "4.2",
+      almaa_ratings: "4.0",
+      status: "Available",
+      created_date: "2024-02-01",
+      updated: "2024-06-12",
+      prod_attri_id: "attr2",
+      color_id: "c2",
+      size_id: "s2",
+      product_measuring_unit_id: "ml",
+      product_purchase_price: "150",
+      product_mrp: "250",
+      unit_price: "200",
+      discount: "20%",
+      selling_price: "200",
+      quantity: 100,
+      reordered_level: "20",
+      attstatus: "active",
+      created: "2024-02-01",
+      is_in_wishlist: true,
+      isLiked: false,
+      qty: 1,
+      suitablefor: "All Hair Types",
+      measurement_name: "100 ml",
+    },
+    {
+      product_id: "p003",
+      product_code: "SKU12347",
+      category_id: "c2",
+      subcategory_id: "sc1",
+      product_name: "SPF 50 Sunscreen",
+      age_group_id: "adult",
+      brand_id: "b1",
+      product_image1: product3Img,
+      product_image2: product3Img,
+      full_description: "Broad-spectrum SPF 50 sunscreen for all skin types.",
+      short_description: "SPF 50 sunscreen",
+      barcode: "123456789014",
+      barcode_image: "barcode3.png",
+      product_sgst: "5%",
+      product_cgst: "5%",
+      recomm_gender: "Unisex",
+      nat_of_prod: "Natural",
+      herb_type: "Green Tea",
+      is_featured: "true",
+      is_combo: "false",
+      is_today: "false",
+      is_offer: "true",
+      offer: "15% off",
+      user_ratings: "4.8",
+      almaa_ratings: "4.5",
+      status: "Available",
+      created_date: "2024-03-10",
+      updated: "2024-06-15",
+      prod_attri_id: "attr3",
+      color_id: "c1",
+      size_id: "s3",
+      product_measuring_unit_id: "ml",
+      product_purchase_price: "400",
+      product_mrp: "500",
+      unit_price: "425",
+      discount: "15%",
+      selling_price: "425",
+      quantity: 75,
+      reordered_level: "15",
+      attstatus: "active",
+      created: "2024-03-01",
+      is_in_wishlist: false,
+      isLiked: true,
+      qty: 1,
+      suitablefor: "All Skin Types",
+      measurement_name: "75 ml",
+    },
+    {
+      product_id: "p004",
+      product_code: "SKU12348",
+      category_id: "c3",
+      subcategory_id: "sc1",
+      product_name: "Aloe Vera Gel",
+      age_group_id: "all",
+      brand_id: "b3",
+      product_image1: product4Img,
+      product_image2: product4Img,
+      full_description:
+        "Multi-purpose aloe vera gel for skin hydration and soothing.",
+      short_description: "Aloe vera gel",
+      barcode: "123456789015",
+      barcode_image: "barcode4.png",
+      product_sgst: "5%",
+      product_cgst: "5%",
+      recomm_gender: "Unisex",
+      nat_of_prod: "Herbal",
+      herb_type: "Aloe Vera",
+      is_featured: "false",
+      is_combo: "true",
+      is_today: "true",
+      is_offer: "false",
+      offer: "",
+      user_ratings: "4.7",
+      almaa_ratings: "4.6",
+      status: "Available",
+      created_date: "2024-04-01",
+      updated: "2024-06-20",
+      prod_attri_id: "attr4",
+      color_id: "c3",
+      size_id: "s4",
+      product_measuring_unit_id: "ml",
+      product_purchase_price: "100",
+      product_mrp: "150",
+      unit_price: "120",
+      discount: "20%",
+      selling_price: "120",
+      quantity: 200,
+      reordered_level: "30",
+      attstatus: "active",
+      created: "2024-04-01",
+      is_in_wishlist: true,
+      isLiked: false,
+      qty: 1,
+      suitablefor: "All Skin Types",
+      measurement_name: "100 ml",
+    },
+  ]);
   const [showVideoPopup, setShowVideoPopup] = useState<boolean>(false);
-  const [faqs, setFaqs] = useState<{ name: string; content: string }[]>([]);
-  const [sellingPrice, setSellingPrice] = useState(0);
+  const [faqs, setFaqs] = useState<{ name: string; content: string }[]>([
+    {
+      name: "What is the return policy?",
+      content:
+        "You can return any unused product within 30 days of purchase for a full refund.",
+    },
+    {
+      name: "How long does shipping take?",
+      content:
+        "Shipping typically takes 5-7 business days, depending on your location.",
+    },
+    {
+      name: "Is this product cruelty-free?",
+      content:
+        "Yes, all our products are cruelty-free and not tested on animals.",
+    },
+    {
+      name: "Can I use this product on sensitive skin?",
+      content:
+        "Yes, our products are formulated to be gentle on sensitive skin. However, we recommend doing a patch test before full application.",
+    },
+    {
+      name: "Are the ingredients natural?",
+      content:
+        "Yes, we use high-quality natural ingredients in our formulations.",
+    },
+  ]);
+  const [sellingPrice, setSellingPrice] = useState(
+    +productDetail.product_attributes[0].selling_price
+  );
   const cart = useAppSelector((state: RootState) => state.cart);
 
-  useEffect(() => {
-    const { request, cancel } = productDetailService.get<
-      ProductDetail,
-      { product_id: number }
-    >({ product_id: +location.state.id });
+  // useEffect(() => {
+  //   const { request, cancel } = productDetailService.get<
+  //     ProductDetail,
+  //     { product_id: number }
+  //   >({ product_id: +location.state.id });
 
-    dispatch(showLoader());
+  //   dispatch(showLoader());
 
-    request
-      .then((res) => {
-        const details = res.data;
-        const price = +details.product_attributes[0].selling_price;
-        dispatch(hideLoader());
-        setProductDetail(details);
-        setSellingPrice(price);
-        setBuyingOptions((buyingOption) =>
-          buyingOption.map((b) => ({
-            ...b,
-            originalPrice: calculateOriginalPrice(price, b.pack),
-            discountedPrice: calculateDiscountedPrice(price, b.pack, b.offer),
-          }))
-        );
-        setQuantityOption({
-          id: 1,
-          label: details.product_attributes[0].product_measuring_unit_id,
-        });
-        setInStock(details.product_attributes[0].attstatus === "1");
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
+  //   request
+  //     .then((res) => {
+  //       const details = res.data;
+  //       const price = +details.product_attributes[0].selling_price;
+  //       dispatch(hideLoader());
+  //       setProductDetail(details);
+  //       setSellingPrice(price);
+  //       setBuyingOptions((buyingOption) =>
+  //         buyingOption.map((b) => ({
+  //           ...b,
+  //           originalPrice: calculateOriginalPrice(price, b.pack),
+  //           discountedPrice: calculateDiscountedPrice(price, b.pack, b.offer),
+  //         }))
+  //       );
+  //       setQuantityOption({
+  //         id: 1,
+  //         label: details.product_attributes[0].product_measuring_unit_id,
+  //       });
+  //       setInStock(details.product_attributes[0].attstatus === "1");
+  //     })
+  //     .catch((err) => {
+  //       if (err instanceof CanceledError) return;
 
-        dispatch(hideLoader());
-      });
+  //       dispatch(hideLoader());
+  //     });
 
-    return () => cancel();
-  }, []);
+  //   return () => cancel();
+  // }, []);
 
   // Related Products
-  useEffect(() => {
-    const { request, cancel } = relatedProductsService.getAll<
-      Product,
-      { product_id: number }
-    >({ product_id: +location.state.id });
+  // useEffect(() => {
+  //   const { request, cancel } = relatedProductsService.getAll<
+  //     Product,
+  //     { product_id: number }
+  //   >({ product_id: +location.state.id });
 
-    request
-      .then((res) => {
-        const updatedProducts = res.data.map((p) => ({ ...p, isLiked: false }));
-        setRelatedProducts(updatedProducts);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
+  //   request
+  //     .then((res) => {
+  //       const updatedProducts = res.data.map((p) => ({ ...p, isLiked: false }));
+  //       setRelatedProducts(updatedProducts);
+  //     })
+  //     .catch((err) => {
+  //       if (err instanceof CanceledError) return;
 
-        console.log(err.message);
-      });
+  //       console.log(err.message);
+  //     });
 
-    return () => cancel();
-  }, []);
+  //   return () => cancel();
+  // }, []);
 
-  useEffect(() => {
-    const { request, cancel } = faqService.get<IFaq[], { product_id: number }>({
-      product_id: +location.state.id,
-    });
+  // useEffect(() => {
+  //   const { request, cancel } = faqService.get<IFaq[], { product_id: number }>({
+  //     product_id: +location.state.id,
+  //   });
 
-    dispatch(showLoader());
+  //   dispatch(showLoader());
 
-    request
-      .then((res) => {
-        dispatch(hideLoader());
-        const data = res.data.map((r) => ({
-          name: r.question,
-          content: r.answer,
-        }));
-        setFaqs(data);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
+  //   request
+  //     .then((res) => {
+  //       dispatch(hideLoader());
+  //       const data = res.data.map((r) => ({
+  //         name: r.question,
+  //         content: r.answer,
+  //       }));
+  //       // setFaqs(data);
+  //     })
+  //     .catch((err) => {
+  //       if (err instanceof CanceledError) return;
 
-        dispatch(hideLoader());
-        console.log(err);
-      });
+  //       dispatch(hideLoader());
+  //       console.log(err);
+  //     });
 
-    return () => cancel();
-  }, []);
+  //   return () => cancel();
+  // }, []);
 
   const renderStatusSoldout = () => (
     <div className="rounded-full flex items-center justify-center px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
@@ -1149,9 +1486,9 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
       </section>
 
       {/* POLICY SECTION */}
-      <section className="container mb-40">
+      {/* <section className="container mb-40">
         <Policy />
-      </section>
+      </section> */}
 
       {/* MODAL VIEW ALL REVIEW */}
       <ModalViewAllReviews
@@ -1168,7 +1505,7 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
       />
 
       {/* EMAIL SUBSCRIBE SECTION */}
-      <EmailSubscribeSection />
+      {/* <EmailSubscribeSection /> */}
     </div>
   );
 };

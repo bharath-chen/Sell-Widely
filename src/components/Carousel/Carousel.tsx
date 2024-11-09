@@ -4,6 +4,7 @@ import "swiper/css/navigation"; // Import Navigation styles
 import "swiper/css/pagination"; // Import Pagination styles
 import { Navigation, Pagination } from "swiper/modules"; // Import the modules
 import { Link } from "react-router-dom";
+import "./Carousel.css";
 
 interface Slide {
   id: number;

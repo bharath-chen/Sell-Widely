@@ -19,7 +19,12 @@ interface Props {
   onSort: (selectedSortOrder: SortOrder) => void;
   selectedFilter: Filters;
   onFilterChange: (filter: Filters, productForms: TabFilterItem[]) => void;
-  productForms: TabFilterItem[];
+  brands: TabFilterItem[];
+  ingredients: TabFilterItem[];
+  certifications: TabFilterItem[];
+  skinType: TabFilterItem[];
+  health: TabFilterItem[];
+  packaging: TabFilterItem[];
   sortOrderRadios: { name: string; id: string; value: string }[];
 }
 
@@ -30,7 +35,12 @@ const SidebarFilters = ({
   onSort,
   selectedFilter,
   onFilterChange,
-  productForms,
+  brands: productForms,
+  ingredients,
+  certifications,
+  skinType,
+  health,
+  packaging,
   sortOrderRadios,
 }: Props) => {
   const handleProductFormChange = (
@@ -65,25 +75,6 @@ const SidebarFilters = ({
     );
   };
 
-  const renderXClear = () => {
-    return (
-      <span className="flex-shrink-0 w-4 h-4 rounded-full bg-primary-500 text-white flex items-center justify-center ml-3 cursor-pointer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-3 w-3"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </span>
-    );
-  };
-
   return (
     <div className="divide-y divide-slate-200 dark:divide-slate-700">
       <div className="py-8 pr-2">
@@ -96,13 +87,58 @@ const SidebarFilters = ({
       <div className="py-8 pr-2">
         {productForms.length > 0 && (
           <AppFilterTabs
-            heading="Nature of Products"
+            heading="Brands"
             items={productForms}
             onItemCheck={handleProductFormChange}
           />
         )}
       </div>
       <div className="py-8 pr-2">
+        {ingredients.length > 0 && (
+          <AppFilterTabs
+            heading="Ingredients"
+            items={ingredients}
+            onItemCheck={handleProductFormChange}
+          />
+        )}
+      </div>
+      <div className="py-8 pr-2">
+        {certifications.length > 0 && (
+          <AppFilterTabs
+            heading="Certifications"
+            items={certifications}
+            onItemCheck={handleProductFormChange}
+          />
+        )}
+      </div>
+      <div className="py-8 pr-2">
+        {health.length > 0 && (
+          <AppFilterTabs
+            heading="Health"
+            items={health}
+            onItemCheck={handleProductFormChange}
+          />
+        )}
+      </div>
+      <div className="py-8 pr-2">
+        {packaging.length > 0 && (
+          <AppFilterTabs
+            heading="Packaging"
+            items={packaging}
+            onItemCheck={handleProductFormChange}
+          />
+        )}
+      </div>
+      <div className="py-8 pr-2">
+        {skinType.length > 0 && (
+          <AppFilterTabs
+            heading="Skin Type"
+            items={skinType}
+            onItemCheck={handleProductFormChange}
+          />
+        )}
+      </div>
+      {/* <div className="py-8 pr-2">
         <MySwitch
           className="pt-5"
           desc=""
@@ -140,7 +176,7 @@ const SidebarFilters = ({
             )
           }
         />
-      </div>
+      </div> */}
       {renderTabsSortOrder()}
     </div>
   );

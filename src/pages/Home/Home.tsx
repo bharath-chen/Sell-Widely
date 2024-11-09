@@ -81,6 +81,7 @@ import { ProductCategory } from "../../models/productCategory";
 import GlobalSellerSection from "./GlobalSeller";
 import SimpleSteps from "./SimpleSteps";
 import ExploreSellWidelyCategories from "./ExploreSellWidelyCategories";
+import Services from "./Services";
 
 export const pageAnimation = {
   initial: { opacity: 0, y: 100 },
@@ -619,6 +620,9 @@ const Home = () => {
 
       {/* Explore SellWidelyCategories */}
       <ExploreSellWidelyCategories />
+
+      {/* Services */}
+      <Services />
 
       {/* Frequently Asked Questions */}
       <section className="container mb-40">

@@ -1,0 +1,32 @@
+/* Styling for Swiper navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000; /* Set arrow color to black */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #333; /* Darker shade on hover */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.5rem; /* Adjust arrow size if needed */
+}
+
+/* Style for Swiper pagination bullets */
+.swiper-pagination-bullet {
+  width: 60px; /* Make bullets wider */
+  height: 6px; /* Set height */
+  background-color: transparent; /* Make the background transparent */
+  border: 2px solid #000; /* Dashed black border */
+  border-radius: 4px; /* Slightly round the corners */
+  margin: 0 4px; /* Add spacing between bullets */
+  transition: all 0.3s ease;
+}
+
+/* Style for active bullet */
+.swiper-pagination-bullet-active {
+  background-color: #000; /* Black fill for active bullet */
+  border: 2px solid #000; /* Solid border for active bullet */
+}

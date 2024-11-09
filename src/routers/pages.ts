@@ -65,23 +65,47 @@ export const pages: Page[] = [
   // { path: "/page-collection", component: PageCollection },
   { path: "/page-search", component: PageSearch },
   //
-  { path: "/account", component: AccountPage, protectedRoute: true },
+  {
+    path: "/account",
+    component: AccountPage,
+    // protectedRoute: true
+  },
   {
     path: "/account-savelists",
     component: AccountSavelists,
-    protectedRoute: true,
+    // protectedRoute: true,
   },
   {
     path: "/account-change-password",
     component: AccountPass,
-    protectedRoute: true,
+    // protectedRoute: true,
   },
-  { path: "/account-support", component: AccountSupport, protectedRoute: true },
-  { path: "/account-my-order", component: AccountOrder, protectedRoute: true },
+  {
+    path: "/account-support",
+    component: AccountSupport,
+    //  protectedRoute: true
+  },
+  {
+    path: "/account-my-order",
+    component: AccountOrder,
+    // protectedRoute: true
+  },
   //
-  { path: "/cart", component: CartPage, protectedRoute: true },
-  { path: "/checkout", component: CheckoutPage, protectedRoute: true },
-  { path: "/thanks", component: ThanksPage, protectedRoute: true },
+  {
+    path: "/cart",
+    component: CartPage,
+    // protectedRoute: true
+  },
+  {
+    path: "/checkout",
+    component: CheckoutPage,
+    // protectedRoute: true
+  },
+  {
+    path: "/thanks",
+    component: ThanksPage,
+    // protectedRoute: true
+  },
   //
   { path: "/blog", component: Blog },
   { path: "/blog/:id", component: BlogSingle },
