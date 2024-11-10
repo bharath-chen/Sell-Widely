@@ -55,6 +55,7 @@ import product1Img from "../../assets/images/1d.png";
 import product2Img from "../../assets/images/2d.jpg";
 import product3Img from "../../assets/images/3d.jpg";
 import product4Img from "../../assets/images/4d.jpg";
+import ProductDisplay from "./ProductDisplay";
 
 const calculateOriginalPrice = (price: number, pack: number) => price * pack;
 
@@ -760,140 +761,140 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
     );
   };
 
-  const renderSectionSidebar = () => {
-    const quantityOptions =
-      productDetail?.product_attributes.map((a, i) => ({
-        id: i + 1,
-        label: a.product_measuring_unit_id,
-      })) || [];
+  // const renderSectionSidebar = () => {
+  //   const quantityOptions =
+  //     productDetail?.product_attributes.map((a, i) => ({
+  //       id: i + 1,
+  //       label: a.product_measuring_unit_id,
+  //     })) || [];
 
-    const hasBuyingOptionSelected = buyingOptions.filter((b) => b.selected);
+  //   const hasBuyingOptionSelected = buyingOptions.filter((b) => b.selected);
 
-    return (
-      <div className="listingSectionSidebar__wrap lg:shadow-lg">
-        <div className="space-y-7 lg:space-y-8">
-          {/* PRICE */}
-          <div className="">
-            {/* ---------- 1 HEADING ----------  */}
-            <div className="flex items-center justify-between space-x-5">
-              <div className="flex text-2xl font-semibold">
-                {/* Rs.{price.toFixed(2)} */}
-                Rs.
-                {sellingPrice.toFixed(2)}
-              </div>
-              <a
-                href="#reviews"
-                className="flex items-center text-sm font-medium"
-              >
-                <div className="">
-                  <StarIcon className="w-5 h-5 pb-[1px] text-orange-400" />
-                </div>
-                <span className="ml-1.5 flex">
-                  <span>
-                    {productDetail?.product_details[0]?.almaa_ratings}{" "}
-                  </span>
-                  <span className="mx-1.5">·</span>
-                  <span className="text-slate-700 dark:text-slate-400 underline">
-                    {productDetail?.product_feedback.length} reviews
-                  </span>
-                </span>
-              </a>
-            </div>
+  //   return (
+  //     <div className="listingSectionSidebar__wrap lg:shadow-lg">
+  //       <div className="space-y-7 lg:space-y-8">
+  //         {/* PRICE */}
+  //         <div className="">
+  //           {/* ---------- 1 HEADING ----------  */}
+  //           <div className="flex items-center justify-between space-x-5">
+  //             <div className="flex text-2xl font-semibold">
+  //               {/* Rs.{price.toFixed(2)} */}
+  //               Rs.
+  //               {sellingPrice.toFixed(2)}
+  //             </div>
+  //             <a
+  //               href="#reviews"
+  //               className="flex items-center text-sm font-medium"
+  //             >
+  //               <div className="">
+  //                 <StarIcon className="w-5 h-5 pb-[1px] text-orange-400" />
+  //               </div>
+  //               <span className="ml-1.5 flex">
+  //                 <span>
+  //                   {productDetail?.product_details[0]?.almaa_ratings}{" "}
+  //                 </span>
+  //                 <span className="mx-1.5">·</span>
+  //                 <span className="text-slate-700 dark:text-slate-400 underline">
+  //                   {productDetail?.product_feedback.length} reviews
+  //                 </span>
+  //               </span>
+  //             </a>
+  //           </div>
 
-            {/* ---------- 3 VARIANTS AND SIZE LIST ----------  */}
-            <div className="mt-6 space-y-7 lg:space-y-8">
-              {inStock ? renderStatusInstock() : renderStatusSoldout()}
-              {/* <div className="">{renderVariants()}</div> */}
-              {/* <div className="">{renderSizeList()}</div> */}
-            </div>
-          </div>
+  //           {/* ---------- 3 VARIANTS AND SIZE LIST ----------  */}
+  //           <div className="mt-6 space-y-7 lg:space-y-8">
+  //             {inStock ? renderStatusInstock() : renderStatusSoldout()}
+  //             {/* <div className="">{renderVariants()}</div> */}
+  //             {/* <div className="">{renderSizeList()}</div> */}
+  //           </div>
+  //         </div>
 
-          {/* QUANTITY OPTION */}
-          <AppProductChip
-            label="Select Quantity"
-            items={quantityOptions}
-            selectedItem={quantityOption}
-            onItemChange={handleQuantityOptionChange}
-          />
+  //         {/* QUANTITY OPTION */}
+  //         <AppProductChip
+  //           label="Select Quantity"
+  //           items={quantityOptions}
+  //           selectedItem={quantityOption}
+  //           onItemChange={handleQuantityOptionChange}
+  //         />
 
-          {/* BUYING OPTION */}
-          {/* <AppProductChip
-            label="Buying Option"
-            items={buyingOptions}
-            selectedItem={buyingOption}
-            onItemChange={setBuyingOption}
-          /> */}
+  //         {/* BUYING OPTION */}
+  //         {/* <AppProductChip
+  //           label="Buying Option"
+  //           items={buyingOptions}
+  //           selectedItem={buyingOption}
+  //           onItemChange={setBuyingOption}
+  //         /> */}
 
-          {/* <div className="my-2">
-            <h4 className="text-sm font-semibold">Buying Option</h4>
+  //         {/* <div className="my-2">
+  //           <h4 className="text-sm font-semibold">Buying Option</h4>
 
-            <div className="grid grid-cols-2 gap-4 desktop:gap-6 desktop:flex desktop:flex-col">
-              {buyingOptions.map((buyingOption) => (
-                <AppBuyingOptionCard
-                  key={buyingOption.id}
-                  buyingOptions={buyingOption}
-                  selected={buyingOption.selected}
-                  onClick={() => handleBuyingOption(buyingOption.id)}
-                />
-              ))}
-            </div>
-          </div> */}
+  //           <div className="grid grid-cols-2 gap-4 desktop:gap-6 desktop:flex desktop:flex-col">
+  //             {buyingOptions.map((buyingOption) => (
+  //               <AppBuyingOptionCard
+  //                 key={buyingOption.id}
+  //                 buyingOptions={buyingOption}
+  //                 selected={buyingOption.selected}
+  //                 onClick={() => handleBuyingOption(buyingOption.id)}
+  //               />
+  //             ))}
+  //           </div>
+  //         </div> */}
 
-          {/*  ---------- 4  QTY AND ADD TO CART BUTTON */}
-          <div className="flex space-x-3.5">
-            {hasBuyingOptionSelected.length === 0 && (
-              <div className="flex items-center justify-center bg-slate-100/70 dark:bg-slate-800/70 px-2 py-3 sm:p-3.5 rounded-full">
-                <NcInputNumber
-                  defaultValue={quantitySelected}
-                  onChange={setQuantitySelected}
-                />
-              </div>
-            )}
-            <ButtonPrimary
-              disabled={!inStock}
-              className={`flex-1 flex-shrink-0 ${
-                !inStock ? "not-allowed" : ""
-              }`}
-              onClick={addToCart}
-            >
-              <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
-              <span className="ml-3">Add to cart</span>
-            </ButtonPrimary>
-          </div>
+  //         {/*  ---------- 4  QTY AND ADD TO CART BUTTON */}
+  //         <div className="flex space-x-3.5">
+  //           {hasBuyingOptionSelected.length === 0 && (
+  //             <div className="flex items-center justify-center bg-slate-100/70 dark:bg-slate-800/70 px-2 py-3 sm:p-3.5 rounded-full">
+  //               <NcInputNumber
+  //                 defaultValue={quantitySelected}
+  //                 onChange={setQuantitySelected}
+  //               />
+  //             </div>
+  //           )}
+  //           <ButtonPrimary
+  //             disabled={!inStock}
+  //             className={`flex-1 flex-shrink-0 ${
+  //               !inStock ? "not-allowed" : ""
+  //             }`}
+  //             onClick={addToCart}
+  //           >
+  //             <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
+  //             <span className="ml-3">Add to cart</span>
+  //           </ButtonPrimary>
+  //         </div>
 
-          {/* SUM */}
-          <div className="hidden sm:flex flex-col space-y-4 ">
-            <p className="text-md text-slate-500 dark:text-slate-300">
-              Free shipping above ₹2000
-            </p>
-            <p className="text-md text-slate-500 dark:text-slate-300">
-              Cash on delivery available at ₹50 COD Charges
-            </p>
-            {/* <div className="space-y-2.5">
-              <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                <span className="flex">
-                  <span>{`Rs.${price.toFixed(2)}  `}</span>
-                  <span className="mx-2">x</span>
-                  <span>{`${quantitySelected} `}</span>
-                </span>
+  //         {/* SUM */}
+  //         <div className="hidden sm:flex flex-col space-y-4 ">
+  //           <p className="text-md text-slate-500 dark:text-slate-300">
+  //             Free shipping above ₹2000
+  //           </p>
+  //           <p className="text-md text-slate-500 dark:text-slate-300">
+  //             Cash on delivery available at ₹50 COD Charges
+  //           </p>
+  //           {/* <div className="space-y-2.5">
+  //             <div className="flex justify-between text-slate-600 dark:text-slate-300">
+  //               <span className="flex">
+  //                 <span>{`Rs.${price.toFixed(2)}  `}</span>
+  //                 <span className="mx-2">x</span>
+  //                 <span>{`${quantitySelected} `}</span>
+  //               </span>
 
-                <span>{`$${(price * quantitySelected).toFixed(2)}`}</span>
-              </div>
-              <div className="flex justify-between text-slate-600 dark:text-slate-300">
-                <span>Tax estimate</span>
-                <span>$0</span>
-              </div>
-            </div>
-            <div className="border-b border-slate-200 dark:border-slate-700"></div>
-            <div className="flex justify-between font-semibold">
-              <span>Total</span>
-              <span>{`$${(price * quantitySelected).toFixed(2)}`}</span>
-            </div> */}
-          </div>
-        </div>
-      </div>
-    );
-  };
+  //               <span>{`$${(price * quantitySelected).toFixed(2)}`}</span>
+  //             </div>
+  //             <div className="flex justify-between text-slate-600 dark:text-slate-300">
+  //               <span>Tax estimate</span>
+  //               <span>$0</span>
+  //             </div>
+  //           </div>
+  //           <div className="border-b border-slate-200 dark:border-slate-700"></div>
+  //           <div className="flex justify-between font-semibold">
+  //             <span>Total</span>
+  //             <span>{`$${(price * quantitySelected).toFixed(2)}`}</span>
+  //           </div> */}
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
   const renderSection1 = () => {
     return (
@@ -930,7 +931,7 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
           </div>
         </div>
         {/*  */}
-        <div className="block lg:hidden">{renderSectionSidebar()}</div>
+        {/* <div className="block lg:hidden">{renderSectionSidebar()}</div> */}
 
         {/*  */}
         <div className="w-14 border-b border-neutral-200 dark:border-neutral-700"></div>
@@ -1221,7 +1222,8 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
     >
       {/* SINGLE HEADER */}
       <>
-        <header className="container mt-8 sm:mt-10">
+        <ProductDisplay productDetail={productDetail} />
+        {/* <header className="container mt-8 sm:mt-10">
           <div className="relative ">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 lg:gap-6">
               <div
@@ -1286,7 +1288,7 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
               </span>
             </div>
           </div>
-        </header>
+        </header> */}
         {/* MODAL PHOTOS */}
         <ModalPhotos
           imgs={[
@@ -1305,17 +1307,17 @@ const ProductDetailPage2: FC<ProductDetailPage2Props> = ({
       {/* MAIN */}
       <main className="container relative z-10 mt-9 sm:mt-11 flex ">
         {/* CONTENT */}
-        <section className="w-full lg:w-3/5 xl:w-2/3 space-y-10 lg:pr-14 lg:space-y-14">
+        <section className="w-full space-y-10 lg:pr-14 lg:space-y-14">
           {renderSection1()}
           {renderSection2()}
         </section>
 
         {/* SIDEBAR */}
-        <aside className="flex-grow">
+        {/* <aside className="flex-grow">
           <div className="hidden lg:block sticky top-28">
             {renderSectionSidebar()}
           </div>
-        </aside>
+        </aside> */}
       </main>
       {/* KEY BENEFITS SECTION */}
       {/* <section className="container mb-10 lg:pb-28 pt-48 space-y-14">
